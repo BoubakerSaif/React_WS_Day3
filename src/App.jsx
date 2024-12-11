@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import SignIn from "./Components/SignIn";
+import { ToastContainer } from "react-toastify";
 
 // State management
 function App() {
   // const [counter, setCounter] = useState(0);
   const [show, setShow] = useState(false);
-
+  const [data, setData] = useState();
+  const [showForm, setShowForm] = useState(true);
   // const addOne = () => {
   //   setCounter(counter + 1);
   // };
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <div>
+      <ToastContainer />
       {/* <button onClick={addOne}>+</button>
       <p>{counter} </p>
       <button onClick={minusOne}>-</button> */}
@@ -39,7 +42,10 @@ function App() {
         />
       )}
 
-      <SignIn />
+      <p> {data?.name} </p>
+      <p> {data?.email} </p>
+      <p> {data?.age} </p>
+      {showForm && <SignIn setData={setData} setShowForm={setShowForm} />}
     </div>
   );
 }
